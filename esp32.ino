@@ -2,22 +2,8 @@
 #include <MFRC522.h>
 #include <U8x8lib.h>
 
-#define OLED_SCK_PIN 22
-#define OLED_SDA_PIN 21
-
-
-
-U8X8_SH1106_128X64_NONAME_HW_I2C u8x8(/* reset=*/ U8X8_PIN_NONE, OLED_SCK_PIN, OLED_SDA_PIN);
-
-#define U8LOG_WIDTH 16
-#define U8LOG_HEIGHT 8
-uint8_t u8log_buffer[U8LOG_WIDTH*U8LOG_HEIGHT];
-U8X8LOG u8x8log;
-
 #define SS_PIN 5
 #define RST_PIN 2
-#define PIN_BUZZER 4
-
 
 const int ledPin = 13;  // GPIO pin connected to the LED
 const int LED1 = 26;
@@ -60,14 +46,8 @@ String toString(byte* buffer, byte bufferSize) {
 void setup() {
 
   pinMode(LED1, OUTPUT);
-  u8x8.begin();
-  u8x8.setFont(u8x8_font_chroma48medium8_r);
-  
-  u8x8log.begin(u8x8, U8LOG_WIDTH, U8LOG_HEIGHT, u8log_buffer);
-  u8x8log.setRedrawMode(1);
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);  // Set the LED pin as an output
-  pinMode(PIN_BUZZER, OUTPUT);
   SPI.begin();              // Init SPI bus
   rfid.PCD_Init();          // Init MFRC522
 
@@ -114,15 +94,7 @@ void loop() {
     Serial.println();
     Serial.print(F("In dec: "));
     digitalWrite(ledPin, 1);
-    digitalWrite(PIN_BUZZER, HIGH);
     printDec(rfid.uid.uidByte, rfid.uid.size);
-    //Print to screen
-    String result = toString(rfid.uid.uidByte, rfid.uid.size);
-    u8x8log.print(result);
-    u8x8log.print("\n");
-    delay(100);
-    digitalWrite(ledPin, 0);
-    digitalWrite(PIN_BUZZER, LOW);
   } else Serial.println(F("Card read previously."));
 
   // Halt PICC
