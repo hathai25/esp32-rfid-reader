@@ -59,3 +59,5 @@ The project includes source code for an RFID Reader with the following requireme
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@hathai25](https://github.com/hathai25)
+- [@Ha-Hieu-Thanh](https://github.com/Ha-Hieu-Thanh)
+- [@ntanh2201](https://github.com/ntanh2201)
