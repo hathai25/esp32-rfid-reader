@@ -18,7 +18,6 @@ jobs:
           sketch-paths: |
             - ./
           libraries: |
-            - name: SPI
             - name: MFRC522
               source-url: https://github.com/miguelbalboa/rfid.git
             - name: U8x8lib
