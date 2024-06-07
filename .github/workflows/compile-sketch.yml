@@ -22,5 +22,6 @@ jobs:
               source-url: https://github.com/miguelbalboa/rfid.git
             - name: U8x8lib
               source-url: https://github.com/olikraus/u8g2.git
+              source-path: cppsrc/U8x8lib.h
             - name: Preferences
               source-url: https://github.com/vshymanskyy/Preferences.git
