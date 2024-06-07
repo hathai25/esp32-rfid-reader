@@ -26,5 +26,3 @@ jobs:
             - name: U8x8lib
               source-url: https://github.com/olikraus/u8g2.git
               source-path: ./cppsrc
-            - name: Preferences
-              source-url: https://github.com/vshymanskyy/Preferences.git
