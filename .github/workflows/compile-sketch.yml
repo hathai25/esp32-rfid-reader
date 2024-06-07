@@ -20,6 +20,9 @@ jobs:
           libraries: |
             - name: MFRC522
               source-url: https://github.com/miguelbalboa/rfid.git
+            - name: u8x8
+              source-url: https://github.com/olikraus/u8g2.git
+              source-path: ./csrc
             - name: U8x8lib
               source-url: https://github.com/olikraus/u8g2.git
               source-path: ./cppsrc
