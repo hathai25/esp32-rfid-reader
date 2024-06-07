@@ -18,6 +18,9 @@ jobs:
           sketch-paths: |
             - ./
           libraries: |
+            - name: Preferences
+              source-url: https://github.com/espressif/arduino-esp32.git
+              source-path: ./libraries/Preferences/src
             - name: MFRC522
               source-url: https://github.com/miguelbalboa/rfid.git
             - name: u8x8
