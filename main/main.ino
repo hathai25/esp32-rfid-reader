@@ -29,7 +29,7 @@ MFRC522::MIFARE_Key key;
 byte nuidPICC[4];
 byte preNuidPICC[4];
 byte pre2NuidPICC[4];
-
+uint32_t counter;
 /**
  * Helper routine to dump a byte array as hex values to Serial.
  */
@@ -102,21 +102,49 @@ void setup()
   preferences.getBytes("prev2", pre2NuidPICC, 4);
   preferences.getBytes("prev", preNuidPICC, 4);
   preferences.getBytes("now", nuidPICC, 4);
+  counter = preferences.getUInt("counter", 0);
 
   String now = toString(nuidPICC, 4);
   String prev = toString(preNuidPICC, 4);
   String prev2 = toString(pre2NuidPICC, 4);
+  if (counter == 0)
+  {
+    u8x8log.print("There is no card");
+  }
+  else if (counter == 1)
+  {
+    u8x8log.print("#1: ");
+    u8x8log.print(now);
+    u8x8log.print("\n");
+  }
+  else if (counter == 2)
+  {
+    u8x8log.print("#1: ");
+    u8x8log.print(prev);
+    u8x8log.print("\n");
 
-  u8x8log.print("Prev 3: ");
-  u8x8log.print(prev2);
-  u8x8log.print("\n");
-  u8x8log.print("Prev 2: ");
-  u8x8log.print(prev);
-  u8x8log.print("\n");
-  u8x8log.print("Prev 1: ");
-  u8x8log.print(now);
-  u8x8log.print("\n");
-
+    u8x8log.print("#2: ");
+    u8x8log.print(now);
+    u8x8log.print("\n");
+  }
+  else
+  {
+    u8x8log.print("#");
+    u8x8log.print(counter - 2);
+    u8x8log.print(": ");
+    u8x8log.print(prev2);
+    u8x8log.print("\n");
+    u8x8log.print("#");
+    u8x8log.print(counter - 1);
+    u8x8log.print(": ");
+    u8x8log.print(prev);
+    u8x8log.print("\n");
+    u8x8log.print("#");
+    u8x8log.print(counter);
+    u8x8log.print(": ");
+    u8x8log.print(now);
+    u8x8log.print("\n");
+  }
   Serial.println(F("This code scan the MIFARE Classsic NUID."));
   Serial.print(F("Using the following key:"));
   printHex(key.keyByte, MFRC522::MF_KEY_SIZE);
@@ -171,16 +199,14 @@ void loop()
     preferences.putBytes("prev2", pre2NuidPICC, 4);
     preferences.putBytes("prev", preNuidPICC, 4);
     preferences.putBytes("now", rfid.uid.uidByte, 4);
-
-    u8x8log.print("Prev 2: ");
-    u8x8log.print(prev2);
-    u8x8log.print("\n");
-    u8x8log.print("Prev 1: ");
-    u8x8log.print(prev);
-    u8x8log.print("\n");
-    u8x8log.print("Now: ");
+    counter++;
+    preferences.putUInt("counter", counter);
+    u8x8log.print("#");
+    u8x8log.print(counter);
+    u8x8log.print(": ");
     u8x8log.print(now);
     u8x8log.print("\n");
+
     delay(100);
     digitalWrite(ledPin, 0);
     digitalWrite(PIN_BUZZER, LOW);
