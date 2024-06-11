@@ -55,7 +55,11 @@ The project includes source code for an RFID Reader with the following requireme
 ## 📖 Hardware Schematic <a name = "schematic"></a>
 ![image](https://github.com/hathai25/esp32-rfid-reader/assets/74005327/3025133f-abe3-4e9e-81df-a4c5b722e4e7)
 
-This schematic outlines the interconnections between an ESP32 microcontroller and various peripheral components, including an RFID-RC522 module, an OLED display, an LED, and a Buzzer. The connections are specified via General-Purpose Input/Output (GPIO) pins, designated for specific signal transmissions that enable communication between the ESP32 and the peripherals. Below is a detailed breakdown of the connections.
+This schematic outlines the interconnections between an ESP32 microcontroller and various peripheral components, including an RFID-RC522 module, an OLED display, an LED, and a Buzzer. The connections are specified via General-Purpose Input/Output (GPIO) pins, designated for specific signal transmissions that enable communication between the ESP32 and the peripherals. [Software Concept](#software) below is a detailed breakdown of the connections.
+
+
+## 💻 Software Concept <a name = "sofware"></a>
+By utilizing the GPIOs of the ESP32 and SPI & I²C interface support, the project is able to control the following components: 
 
 #### ESP32 and RFID-RC522 Module
 
@@ -74,9 +78,6 @@ This schematic outlines the interconnections between an ESP32 microcontroller an
 #### ESP32 and Buzzer
 
 - GPIO4: The Buzzer is connected to GPIO4 on the ESP32. By toggling GPIO4 high and low at various frequencies, the ESP32 can control the buzzer to generate different tones.
-
-## 💻 Software Concept <a name = "sofware"></a>
-  (Chỉ cần nêu nguyên lý, ví dụ: trạng thái nút bấm được xác định thông qua cơ chế ngắt ở GPIO..;  khủng long nhảy lên cao, tương ứng với mức 16 điểm ảnh trên màn hình oled, số 16 đó được định nghĩa ở #define JUMP_HEIHT 16;  Sử dụng 3 cảm biến siêu âm SR-04 để đo khoảng cách với giá trị trả về trong khoảng 10- 32, tương ứng với khoảng cách vật lý trong khoảng 5cm-40cm;  Xe rẽ trái bằng cách cho bánh xe trái và bánh xe phải quay tròn với mức công suất +70%, -45%) 
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@hathai25](https://github.com/hathai25)
