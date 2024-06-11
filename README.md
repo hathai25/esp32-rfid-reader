@@ -55,6 +55,10 @@ The project includes source code for an RFID Reader with the following requireme
 ## 📖 Hardware Schematic <a name = "schematic"></a>
 ![image](https://github.com/hathai25/esp32-rfid-reader/assets/74005327/3025133f-abe3-4e9e-81df-a4c5b722e4e7)
 
+For the RC522 module, the schematic is further breakdown for the setup
+![image](https://github.com/hathai25/esp32-rfid-reader/assets/74005327/c3f74cee-56fc-47e0-ac3f-5b4a888c6100)
+
+
 This schematic outlines the interconnections between an ESP32 microcontroller and various peripheral components, including an RFID-RC522 module, an OLED display, an LED, and a Buzzer. The connections are specified via General-Purpose Input/Output (GPIO) pins, designated for specific signal transmissions that enable communication between the ESP32 and the peripherals. [Software Concept](#software) below is a detailed breakdown of the connections.
 
 
