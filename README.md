@@ -34,36 +34,40 @@ A project involves creating a device that uses an ESP32 microcontroller to read 
 The project includes source code for an RFID Reader with the following requirements:
 
 #### 📃 Functional requirement
+
 - Read RFID Card: The ESP32 must be able to read data from RFID cards using an attached RFID reader module, capturing the unique identifier (UID) and other stored information from the card.
 - Display Card Info on OLED Screen: Upon successfully reading an RFID card, the ESP32 should display the card's information, such as the UID and any additional data, on an OLED screen connected to the microcontroller.
 - Activate Buzzer and LED on RFID Tap: When an RFID card is tapped and read, the ESP32 should trigger a buzzer and light up an LED to provide audible and visual feedback, indicating a successful read operation.
 
 #### 📃 Non-functional requirement
+
 - Debouncing: Introducing a debounce time interval during which repeated taps of the same card are ignored to prevent duplicate reads.
 - State Management: Maintaining a record of recently read card UIDs and ensuring that any repeated taps within a predefined time window are disregarded.
 
 ## 🏁 Getting Started <a name = "getting-started"></a>
+
 (Dành cho người sử dụng ko biết gì về IT, kèm ảnh minh họa sản phẩm, và link video)
+
 ## ⛏️ Bill of Material <a name = "material"></a>
 
-- ArduinoIDE: For programming the device 
+- ArduinoIDE: For programming the device
 - ESP32 Microcontroller x1
 - LED x1
 - Oled SSD1306 x1
 - Buzzer x1
 
 ## 📖 Hardware Schematic <a name = "schematic"></a>
+
 ![image](https://github.com/hathai25/esp32-rfid-reader/assets/74005327/3025133f-abe3-4e9e-81df-a4c5b722e4e7)
 
 For the RC522 module, the schematic is further breakdown for the setup
 ![image](https://github.com/hathai25/esp32-rfid-reader/assets/74005327/c3f74cee-56fc-47e0-ac3f-5b4a888c6100)
 
-
 This schematic outlines the interconnections between an ESP32 microcontroller and various peripheral components, including an RFID-RC522 module, an OLED display, an LED, and a Buzzer. The connections are specified via General-Purpose Input/Output (GPIO) pins, designated for specific signal transmissions that enable communication between the ESP32 and the peripherals. [Software Concept](#software) below is a detailed breakdown of the connections.
 
-
 ## 💻 Software Concept <a name = "sofware"></a>
-By utilizing the GPIOs of the ESP32 and SPI & I²C interface support, the project is able to control the following components: 
+
+By utilizing the GPIOs of the ESP32 and SPI & I²C interface support, the project is able to control the following components:
 
 #### ESP32 and RFID-RC522 Module
 
@@ -82,6 +86,20 @@ By utilizing the GPIOs of the ESP32 and SPI & I²C interface support, the projec
 #### ESP32 and Buzzer
 
 - GPIO4: The Buzzer is connected to GPIO4 on the ESP32. By toggling GPIO4 high and low at various frequencies, the ESP32 can control the buzzer to generate different tones.
+
+### Setup
+
+- setup cho u8x8, led pin, pin buzzer, rfid.
+- lấy thông tin index và 3 id gần nhất từ thư viện preferences
+- log ra màn hình 3 id gần nhất
+
+### Loop
+
+- kiểm tra xem thẻ vừa đọc có trùng với thẻ trước đó không? nếu có thì không nhận thẻ mới
+- cho còi kêu và đèn sáng
+- cập nhât lại giá trị 3 thẻ gần nhất, tăng biến counter lên 1
+- lưu vào thư viện preferences
+
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@hathai25](https://github.com/hathai25)
