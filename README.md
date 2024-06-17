@@ -46,7 +46,19 @@ The project includes source code for an RFID Reader with the following requireme
 
 ## 🏁 Getting Started <a name = "getting-started"></a>
 
-(Dành cho người sử dụng ko biết gì về IT, kèm ảnh minh họa sản phẩm, và link video)
+### Link video demo: [Link demo](https://youtube.com/shorts/sYhw6DB9md4?si=6S6WKxQFRnmguthZ)
+
+### Hardware:
+
+1. RFID CARDs
+2. ESP32 Module
+3. Programming Cable
+4. RFID-RC522
+5. OLED SSD1306
+6. Led
+7. Buzzer
+
+![hardware](https://github.com/hathai25/esp32-rfid-reader/assets/87304085/341c01d9-b354-4e49-a371-d66e80acad19)
 
 ## ⛏️ Bill of Material <a name = "material"></a>
 
@@ -84,7 +96,6 @@ By utilizing the GPIOs of the ESP32 and SPI & I²C interface support, the projec
 #### ESP32 and Buzzer
 
 - GPIO4: The Buzzer is connected to GPIO4 on the ESP32. By toggling GPIO4 high and low at various frequencies, the ESP32 can control the buzzer to generate different tones.
-
 
 ### Initialization
 
