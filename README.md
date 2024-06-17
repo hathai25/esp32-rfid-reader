@@ -87,18 +87,19 @@ By utilizing the GPIOs of the ESP32 and SPI & I²C interface support, the projec
 
 - GPIO4: The Buzzer is connected to GPIO4 on the ESP32. By toggling GPIO4 high and low at various frequencies, the ESP32 can control the buzzer to generate different tones.
 
-### Setup
 
-- setup cho u8x8, led pin, pin buzzer, rfid.
-- lấy thông tin index và 3 id gần nhất từ thư viện preferences
-- log ra màn hình 3 id gần nhất
+### Initialization
 
-### Loop
+- Initialize the U8X8 display, LED pin, buzzer pin, and RFID module.
+- Retrieve the index along with the three most recent IDs from the Preferences library.
+- Display the three most recent IDs on the screen.
 
-- kiểm tra xem thẻ vừa đọc có trùng với thẻ trước đó không? nếu có thì không nhận thẻ mới
-- cho còi kêu và đèn sáng
-- cập nhât lại giá trị 3 thẻ gần nhất, tăng biến counter lên 1
-- lưu vào thư viện preferences
+### Main Loop
+
+- Check if the newly scanned card matches the previously scanned card; if it does, do not process the new card scan.
+- Activate the buzzer and turn on the LED light to signal a successful scan.
+- Update the storage with the three most recent card IDs and increment the counter by one.
+- Save the updated values and the counter increment back to the Preferences library - which uses a portion of the on-board non-volatile memory (NVS) of the ESP32 to store data.
 
 ## ✍️ Authors <a name = "authors"></a>
 
